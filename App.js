@@ -1,19 +1,52 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {View} from 'react-native';
+import MainView from './View/MainView';
+import PinCodeView from './View/PinCodeView';
+import AdminView from './View/AdminView';
+import UserDisplayView from './View/UserDisplayView';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-export default function App() {
+const AppNavigator = createStackNavigator({
+    MainView: {
+      screen: MainView,
+      navigationOptions: {
+          header: null,
+      },
+    },
+    PinCodeView : {
+      screen : PinCodeView,
+      navigationOptions: {
+          header: null,
+      },
+    },
+    AdminView : {
+      screen : AdminView,
+      navigationOptions: {
+          header: null,
+      },
+    },
+    UserDisplayView : {
+      screen : UserDisplayView,
+      navigationOptions: {
+          header: null,
+      },
+    },
+    
+  },
+  {
+    initialRouteName: 'MainView',
+  }
+);
+const AppContainer = createAppContainer(AppNavigator);
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+      <AppContainer />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+
+export default App ;
+
